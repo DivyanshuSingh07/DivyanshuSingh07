@@ -19,6 +19,9 @@ const longestLine = Math.max(
     ...ascii.map((line) => line.length)
 );
 
+const USERNAME = "DivyanshuSingh07";
+
+
 const fontSize = 16;
 const lineHeight = 22;
 const padding = 40;
@@ -175,7 +178,7 @@ viewBox="0 0 ${width} ${height}"
     font-size="14"
     fill="#8B949E"
 >
-terminal://PlasCovid
+terminal://${USERNAME}
 </text>
 
 <!-- ASCII -->
@@ -311,7 +314,7 @@ console.log(
 //         font-size="14"
 //         fill="#8B949E"
 //     >
-//         terminal://PlasCovid
+//         terminal://DivyanshuSingh07
 //     </text>
 
 //     <!-- ASCII Face -->
