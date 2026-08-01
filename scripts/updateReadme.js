@@ -39,7 +39,6 @@ const stats = JSON.parse(
 // ================================
 // Replace Placeholders
 // ================================
-
 const replacements = {
 
     username: stats.username,
@@ -54,15 +53,39 @@ const replacements = {
 
     totalStars: stats.totalStars,
 
-    mostUsedLanguage: stats.mostUsedLanguage,
-
-    latestRepository: stats.latestRepository,
-
     githubSince: stats.githubSince
 
 };
 
+const techIcons =
+    stats.techStack.join(",");
+
+const projectButtons =
+    stats.projects
+        .map(project => {
+
+            const badge =
+                project.name.replace(/ /g, "%20");
+
+            return `
+<a href="${project.url}">
+<img src="https://img.shields.io/badge/${badge}-${project.color}?style=for-the-badge&logo=${project.logo}&logoColor=white"/>
+</a>`;
+
+        })
+        .join("\n");
+
 let readme = template;
+
+readme = readme.replaceAll(
+    "{{techStack}}",
+    techIcons
+);
+
+readme = readme.replaceAll(
+    "{{projectButtons}}",
+    projectButtons
+);
 
 for (const [key, value] of Object.entries(replacements)) {
 

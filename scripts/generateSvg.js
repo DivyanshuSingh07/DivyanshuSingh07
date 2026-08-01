@@ -12,15 +12,15 @@ const CONFIG = {
 
     fontFamily: "Consolas, Monaco, 'Courier New', monospace",
 
-    fontSize: 16,
+    fontSize: 18,
 
-    lineHeight: 22,
+    lineHeight: 20,
 
-    padding: 40,
+    padding: 18,
 
     titleBarHeight: 52,
 
-    footerHeight: 90,
+    footerHeight: 0,
 
     borderRadius: 14,
 
@@ -91,7 +91,6 @@ function calculateDimensions(ascii) {
     const height =
         CONFIG.titleBarHeight +
         portraitHeight +
-        CONFIG.footerHeight +
         CONFIG.padding * 2;
 
     return {
@@ -212,19 +211,13 @@ function createWindow(width, height) {
     return `
 
 <rect
-width="100%"
-height="100%"
-fill="${CONFIG.background}"
-/>
-
-<rect
 x="${CONFIG.terminalPadding}"
 y="${CONFIG.terminalPadding}"
 width="${width - CONFIG.terminalPadding * 2}"
 height="${height - CONFIG.terminalPadding * 2}"
 rx="${CONFIG.borderRadius}"
-fill="${CONFIG.terminalBackground}"
-stroke="${CONFIG.borderColor}"
+fill="transparent"
+stroke="none"
 />
 
 `;
@@ -330,54 +323,6 @@ ${text}
 }
 
 // =============================================
-// Footer
-// =============================================
-
-function createFooter(width, height) {
-
-    const footerTop =
-        height - CONFIG.footerHeight;
-
-    return `
-
-<line
-x1="${CONFIG.terminalPadding}"
-y1="${footerTop}"
-x2="${width - CONFIG.terminalPadding}"
-y2="${footerTop}"
-stroke="${CONFIG.borderColor}"
-/>
-
-<text
-x="${CONFIG.padding}"
-y="${footerTop + 28}"
-font-family="${CONFIG.fontFamily}"
-font-size="15"
-fill="${CONFIG.footerColor}"
->
-
-&gt; status : online
-
-</text>
-
-<text
-x="${CONFIG.padding}"
-y="${footerTop + 52}"
-font-family="${CONFIG.fontFamily}"
-font-size="15"
-fill="${CONFIG.footerColor}"
->
-
-
-&gt; profile: github
-
-</text>
-
-`;
-
-}
-
-// =============================================
 // Build SVG
 // =============================================
 
@@ -405,7 +350,6 @@ ${createTitleBar(width)}
 
 ${createAscii(ascii)}
 
-${createFooter(width, height)}
 
 </svg>
 

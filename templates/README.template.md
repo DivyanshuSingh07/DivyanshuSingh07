@@ -14,52 +14,42 @@
 ## terminal://{{username}}
 
 ```text
-SYSTEM INFORMATION
-────────────────────────────────
+SYSTEM
+────────────────────────────────────────
 
-Name              : {{name}}
+Name      : {{name}}
 
-Role              : React Developer
+Role      : React Developer
 
-Location          : India
+Location  : India
 
-Learning
-────────────────────────────────
+Status    : Building cool things...
+```
 
-• React
-• Redux Toolkit
-• Next.js
+### Tech Stack
 
-Current Projects
-────────────────────────────────
+<p>
 
-• Productivity Dashboard
+<img src="https://skillicons.dev/icons?i={{techStack}}" />
 
-• GitHub Profile
+</p>
 
-• Portfolio
+### Current Projects
 
-GitHub
-────────────────────────────────
+<p>
 
-Repositories      : {{publicRepos}}
+{{projectButtons}}
 
-Followers         : {{followers}}
+</p>
 
-Following         : {{following}}
+### GitHub Stats
 
-Stars             : {{totalStars}}
-
-Language          : {{mostUsedLanguage}}
-
-Latest Repo       : {{latestRepository}}
-
-GitHub Since      : {{githubSince}}
-
-Status
-────────────────────────────────
-
-Building cool things...
+```text
+Repositories : {{publicRepos}}
+Followers    : {{followers}}
+Following    : {{following}}
+Stars        : {{totalStars}}
+Since         : {{githubSince}}
 ```
 
 </td>

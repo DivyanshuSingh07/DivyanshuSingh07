@@ -14,52 +14,53 @@
 ## terminal://DivyanshuSingh07
 
 ```text
-SYSTEM INFORMATION
-────────────────────────────────
+SYSTEM
+────────────────────────────────────────
 
-Name              : DIVYANSHU SINGH
+Name      : DIVYANSHU SINGH
 
-Role              : React Developer
+Role      : React Developer
 
-Location          : India
+Location  : India
 
-Learning
-────────────────────────────────
+Status    : Building cool things...
+```
 
-• React
-• Redux Toolkit
-• Next.js
+### Tech Stack
 
-Current Projects
-────────────────────────────────
+<p>
 
-• Productivity Dashboard
+<img src="https://skillicons.dev/icons?i=html,css,javascript,react,redux,nextjs,nodejs,git,github,vscode" />
 
-• GitHub Profile
+</p>
 
-• Portfolio
+### Current Projects
 
-GitHub
-────────────────────────────────
+<p>
 
-Repositories      : 11
 
-Followers         : 0
+<a href="https://your-project.vercel.app">
+<img src="https://img.shields.io/badge/Productivity%20Dashboard-4F46E5?style=for-the-badge&logo=react&logoColor=white"/>
+</a>
 
-Following         : 0
+<a href="https://github.com/DivyanshuSingh07">
+<img src="https://img.shields.io/badge/GitHub%20Profile-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
 
-Stars             : 0
+<a href="https://portfolio-link.com">
+<img src="https://img.shields.io/badge/Portfolio-0EA5E9?style=for-the-badge&logo=vercel&logoColor=white"/>
+</a>
 
-Language          : JavaScript
+</p>
 
-Latest Repo       : DivyanshuSingh07
+### GitHub Stats
 
-GitHub Since      : 2019
-
-Status
-────────────────────────────────
-
-Building cool things...
+```text
+Repositories : 11
+Followers    : 0
+Following    : 0
+Stars        : 0
+Since         : 2019
 ```
 
 </td>

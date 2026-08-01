@@ -4,187 +4,389 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 
-// ================================
+// ======================================================
 // Configuration
-// ================================
+// ======================================================
 
-const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const CONFIG = {
 
-const OUTPUT = path.join(
-    __dirname,
-    "../data/stats.json"
+    username:
+        process.env.GITHUB_USERNAME,
+
+    token:
+        process.env.GITHUB_TOKEN,
+
+    output:
+        path.join(
+            __dirname,
+            "../data/stats.json"
+        )
+
+};
+
+// ======================================================
+// Validation
+// ======================================================
+
+if (!CONFIG.username) {
+
+    console.error(
+        "❌ Missing GITHUB_USERNAME in .env"
+    );
+
+    process.exit(1);
+
+}
+
+if (!CONFIG.token) {
+
+    console.error(
+        "❌ Missing GITHUB_TOKEN in .env"
+    );
+
+    process.exit(1);
+
+}
+
+console.log("");
+
+console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+console.log(
+    "Fetching GitHub Statistics"
 );
 
-// ================================
-// Validation
-// ================================
+console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-if (!GITHUB_USERNAME) {
-    console.error("❌ Missing GITHUB_USERNAME in .env");
-    process.exit(1);
-}
+console.log("");
 
-if (!GITHUB_TOKEN) {
-    console.error("❌ Missing GITHUB_TOKEN in .env");
-    process.exit(1);
-}
+console.log(
+    `Username : ${CONFIG.username}`
+);
 
-console.log("==================================");
-console.log("GitHub Username :", GITHUB_USERNAME);
-console.log("Token Loaded    :", "✅");
-console.log("==================================");
+console.log(
+    "Token    : Loaded"
+);
 
-// ================================
-// Fetch Stats
-// ================================
+console.log("");
 
-async function fetchStats() {
+// ======================================================
+// Read Existing stats.json
+// ======================================================
+
+function readExistingStats() {
+
+    if (
+        !fs.existsSync(CONFIG.output)
+    ) {
+
+        return {};
+
+    }
+
     try {
 
-        // ----------------------------
-        // User Information
-        // ----------------------------
+        return JSON.parse(
 
-        const userResponse = await axios.get(
-            `https://api.github.com/users/${GITHUB_USERNAME}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${GITHUB_TOKEN}`,
-                    Accept: "application/vnd.github+json"
-                }
-            }
+            fs.readFileSync(
+                CONFIG.output,
+                "utf8"
+            )
+
         );
 
-        // ----------------------------
-        // Repository Information
-        // ----------------------------
+    }
 
-        const reposResponse = await axios.get(
-            `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`,
-            {
-                headers: {
-                    Authorization: `Bearer ${GITHUB_TOKEN}`,
-                    Accept: "application/vnd.github+json"
-                }
-            }
+    catch {
+
+        return {};
+
+    }
+
+}
+
+// ======================================================
+// Fetch GitHub Data
+// ======================================================
+
+async function fetchGitHubData() {
+
+    const headers = {
+
+        Authorization:
+            `Bearer ${CONFIG.token}`,
+
+        Accept:
+            "application/vnd.github+json"
+
+    };
+
+    //------------------------------------------
+    // User
+    //------------------------------------------
+
+    const userResponse =
+        await axios.get(
+
+            `https://api.github.com/users/${CONFIG.username}`,
+
+            { headers }
+
         );
 
-        const user = userResponse.data;
-        const repos = reposResponse.data;
+    //------------------------------------------
+    // Repositories
+    //------------------------------------------
 
-        // ----------------------------
-        // Calculate Total Stars
-        // ----------------------------
+    const repoResponse =
+        await axios.get(
 
-        let totalStars = 0;
+            `https://api.github.com/users/${CONFIG.username}/repos?per_page=100`,
 
-        // ----------------------------
-        // Count Languages
-        // ----------------------------
+            { headers }
 
-        const languageCount = {};
+        );
 
-        repos.forEach((repo) => {
+    return {
 
-            totalStars += repo.stargazers_count;
+        user:
+            userResponse.data,
 
-            if (repo.language) {
+        repos:
+            repoResponse.data
 
-                languageCount[repo.language] =
-                    (languageCount[repo.language] || 0) + 1;
+    };
 
-            }
+}
 
-        });
+// ======================================================
+// Calculate Statistics
+// ======================================================
 
-        // ----------------------------
-        // Most Used Language
-        // ----------------------------
+function buildGitHubStats(user, repos) {
 
-        let mostUsedLanguage = "Unknown";
+    //------------------------------------------
+    // Total Stars
+    //------------------------------------------
 
-        if (Object.keys(languageCount).length > 0) {
+    let totalStars = 0;
 
-            mostUsedLanguage = Object.entries(languageCount)
-                .sort((a, b) => b[1] - a[1])[0][0];
+    repos.forEach(repo => {
 
-        }
+        totalStars +=
+            repo.stargazers_count;
 
-        // ----------------------------
-        // Latest Repository
-        // ----------------------------
+    });
 
-        const latestRepo = [...repos]
-            .sort(
-                (a, b) =>
-                    new Date(b.created_at) -
-                    new Date(a.created_at)
-            )[0];
+    //------------------------------------------
+    // Latest Repository
+    //------------------------------------------
 
-        // ----------------------------
-        // Create Stats Object
-        // ----------------------------
+    const latestRepository =
 
-        const stats = {
+        repos.length === 0
 
-            username: user.login,
+            ? "None"
 
-            name: user.name,
+            : [...repos]
 
-            publicRepos: user.public_repos,
+                .sort(
 
-            followers: user.followers,
+                    (a, b) =>
 
-            following: user.following,
+                        new Date(b.created_at) -
 
-            totalStars,
+                        new Date(a.created_at)
 
-            mostUsedLanguage,
+                )[0].name;
 
-            latestRepository: latestRepo
-                ? latestRepo.name
-                : "None",
+    //------------------------------------------
 
-            githubSince:
-                new Date(user.created_at).getFullYear(),
+    return {
 
-            profileUrl: user.html_url,
+        username:
+            user.login,
 
-            avatar: user.avatar_url
+        name:
+            user.name,
+
+        publicRepos:
+            user.public_repos,
+
+        followers:
+            user.followers,
+
+        following:
+            user.following,
+
+        totalStars,
+
+        latestRepository,
+
+        githubSince:
+            new Date(
+                user.created_at
+            ).getFullYear(),
+
+        profileUrl:
+            user.html_url,
+
+        avatar:
+            user.avatar_url
+
+    };
+
+}
+
+// ======================================================
+// Save
+// ======================================================
+
+function saveStats(stats) {
+
+    fs.writeFileSync(
+
+        CONFIG.output,
+
+        JSON.stringify(
+            stats,
+            null,
+            4
+        )
+
+    );
+
+}
+
+// ======================================================
+// Main
+// ======================================================
+
+async function main() {
+
+    try {
+
+        //--------------------------------------
+        // Preserve custom fields
+        //--------------------------------------
+
+        const existingStats =
+            readExistingStats();
+
+        //--------------------------------------
+        // Fetch GitHub
+        //--------------------------------------
+
+        console.log(
+            "✔ Fetching user..."
+        );
+
+        const {
+
+            user,
+
+            repos
+
+        } = await fetchGitHubData();
+
+        //--------------------------------------
+        // Build new GitHub stats
+        //--------------------------------------
+
+        const githubStats =
+            buildGitHubStats(
+                user,
+                repos
+            );
+
+        //--------------------------------------
+        // Merge
+        //--------------------------------------
+
+        const finalStats = {
+
+            ...existingStats,
+
+            ...githubStats
 
         };
 
-        // ----------------------------
-        // Save JSON
-        // ----------------------------
+        //--------------------------------------
+        // Save
+        //--------------------------------------
 
-        fs.writeFileSync(
-            OUTPUT,
-            JSON.stringify(stats, null, 4)
+        saveStats(
+            finalStats
         );
 
-        console.log("\n✅ Stats generated successfully!");
-        console.log(`📄 Saved to ${OUTPUT}`);
+        console.log("");
+
+        console.log(
+            "✔ stats.json updated successfully"
+        );
+
+        console.log("");
+
+        console.log(
+            `Repositories : ${githubStats.publicRepos}`
+        );
+
+        console.log(
+            `Followers    : ${githubStats.followers}`
+        );
+
+        console.log(
+            `Following    : ${githubStats.following}`
+        );
+
+        console.log(
+            `Stars        : ${githubStats.totalStars}`
+        );
+
+        console.log(
+            `Latest Repo  : ${githubStats.latestRepository}`
+        );
+
+        console.log("");
 
     }
+
     catch (error) {
 
-        console.error("\n❌ Failed to fetch GitHub data\n");
+        console.log("");
+
+        console.error(
+            "❌ Failed to fetch GitHub data"
+        );
+
+        console.log("");
 
         if (error.response) {
 
-            console.error(error.response.status);
-            console.error(error.response.data);
+            console.error(
+                error.response.status
+            );
+
+            console.error(
+                error.response.data
+            );
 
         }
+
         else {
 
-            console.error(error.message);
+            console.error(
+                error.message
+            );
 
         }
 
+        process.exit(1);
+
     }
+
 }
 
-fetchStats();
+// ======================================================
+
+main();
