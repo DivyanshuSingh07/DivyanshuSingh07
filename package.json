@@ -4,11 +4,12 @@
   "description": "<!--\r **DivyanshuSingh07/DivyanshuSingh07** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
   "main": "index.js",
   "scripts": {
-  "svg": "node scripts/generateSvg.js",
-  "stats": "node scripts/fetchStats.js",
-  "readme": "node scripts/updateReadme.js",
-  "build": "npm run svg && npm run stats && npm run readme"
-},
+    "face": "node scripts/convertToAscii.js",
+    "svg": "node scripts/generateSvg.js",
+    "stats": "node scripts/fetchStats.js",
+    "readme": "node scripts/updateReadme.js",
+    "build": "npm run face && npm run svg && npm run stats && npm run readme"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DivyanshuSingh07/DivyanshuSingh07.git"
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/DivyanshuSingh07/DivyanshuSingh07#readme",
   "dependencies": {
     "axios": "^1.19.0",
-    "dotenv": "^17.4.2"
+    "dotenv": "^17.4.2",
+    "jimp": "^1.6.1"
   }
 }

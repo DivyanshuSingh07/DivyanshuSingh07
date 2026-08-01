@@ -11,13 +11,13 @@
 
 <td width="58%" valign="top">
 
-## terminal://DivyanshuSingh07
+## terminal://{{username}}
 
 ```text
 SYSTEM INFORMATION
 ────────────────────────────────
 
-Name              : DIVYANSHU SINGH
+Name              : {{name}}
 
 Role              : React Developer
 
@@ -42,19 +42,19 @@ Current Projects
 GitHub
 ────────────────────────────────
 
-Repositories      : 11
+Repositories      : {{publicRepos}}
 
-Followers         : 0
+Followers         : {{followers}}
 
-Following         : 0
+Following         : {{following}}
 
-Stars             : 0
+Stars             : {{totalStars}}
 
-Language          : JavaScript
+Language          : {{mostUsedLanguage}}
 
-Latest Repo       : DivyanshuSingh07
+Latest Repo       : {{latestRepository}}
 
-GitHub Since      : 2019
+GitHub Since      : {{githubSince}}
 
 Status
 ────────────────────────────────
