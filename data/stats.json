@@ -1,20 +1,16 @@
 {
     "username": "DivyanshuSingh07",
     "name": "DIVYANSHU SINGH",
-
     "role": "React Developer",
     "location": "India",
     "status": "Building cool things...",
-
     "publicRepos": 11,
     "followers": 0,
     "following": 0,
     "totalStars": 0,
     "githubSince": 2019,
-
     "profileUrl": "https://github.com/DivyanshuSingh07",
     "avatar": "https://avatars.githubusercontent.com/u/54947351?v=4",
-
     "techStack": [
         "html",
         "css",
@@ -27,11 +23,11 @@
         "github",
         "vscode"
     ],
-
     "profiles": {
         "portfolio": "https://your-portfolio.vercel.app",
         "linkedin": "https://www.linkedin.com/in/divyanshu-singh-a453a21a4/",
         "medium": "https://medium.com/@divyanshu_singh",
         "twitter": "https://x.com/div_yan_shu"
-    }
+    },
+    "latestRepository": "DivyanshuSingh07"
 }
