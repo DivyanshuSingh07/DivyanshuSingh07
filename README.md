@@ -1,76 +1,97 @@
 <table>
 <tr>
 
-<td width="46%" align="center" valign="middle">
-
-<p align="center">
+<td width="55%" align="center" valign="middle">
 
 <img
-    src="./assets/animated-face.svg"
-    width="100%"
-    alt="Animated ASCII Portrait"
+src="./assets/animated-face.svg"
+width="100%"
+alt="Animated ASCII Portrait"
 />
-
-</p>
 
 </td>
 
-<td width="54%" valign="top">
+<td width="45%" valign="top">
 
-<h2>terminal://DivyanshuSingh07</h2>
+## ❯ terminal://DivyanshuSingh07
 
-```text
-SYSTEM
-────────────────────────────────────────
+### 🖥️ System
 
-Name      : DIVYANSHU SINGH
+| | |
+|:--|:--|
+| **👤 Name** | DIVYANSHU SINGH |
+| **💻 Role** | React Developer |
+| **📍 Location** | India |
+| **🚀 Status** | Building cool things... |
 
-Role      : React Developer
+---
 
-Location  : India
+### 🧰 Toolbox
 
-Status    : Building cool things...
-```
-
-### Tech Stack
-
-<p>
+<p align="left">
 
 <img src="https://skillicons.dev/icons?i=html,css,javascript,react,redux,nextjs,nodejs,git,github,vscode" />
 
 </p>
 
-### Current Projects
+---
+
+### 🌐 Connect
 
 <p>
 
 
-<a href="https://your-project.vercel.app">
-<img src="https://img.shields.io/badge/Productivity%20Dashboard-4F46E5?style=for-the-badge&logo=react&logoColor=white"/>
+<a href="https://your-portfolio.vercel.app" target="_blank">
+
+<img
+src="https://img.shields.io/badge/Portfolio-111827?style=for-the-badge&logo=vercel&logoColor=white"
+alt="Portfolio"
+/>
+
 </a>
 
-<a href="https://github.com/DivyanshuSingh07">
-<img src="https://img.shields.io/badge/GitHub%20Profile-181717?style=for-the-badge&logo=github&logoColor=white"/>
+<a href="https://linkedin.com/in/your-linkedin" target="_blank">
+
+<img
+src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"
+alt="LinkedIn"
+/>
+
 </a>
 
-<a href="https://portfolio-link.com">
-<img src="https://img.shields.io/badge/Portfolio-0EA5E9?style=for-the-badge&logo=vercel&logoColor=white"/>
+<a href="https://medium.com/@yourusername" target="_blank">
+
+<img
+src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white"
+alt="Medium"
+/>
+
+</a>
+
+<a href="https://x.com/yourusername" target="_blank">
+
+<img
+src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white"
+alt="X"
+/>
+
 </a>
 
 </p>
 
-### GitHub Stats
+---
 
-```text
-Repositories : 11
-Followers    : 0
-Following    : 0
-Stars        : 0
-Since         : 2019
-```
+### 📊 GitHub
+
+| | |
+|:--|--:|
+| **📦 Repositories** | 11 |
+| **⭐ Stars** | 0 |
+| **👥 Followers** | 0 |
+| **🤝 Following** | 0 |
+| **🗓 Since** | 2019 |
 
 </td>
 
 </tr>
-
 </table>

@@ -1,65 +1,62 @@
 <table>
 <tr>
 
-<td width="46%" align="center" valign="middle">
-
-<p align="center">
+<td width="55%" align="center" valign="middle">
 
 <img
-    src="./assets/animated-face.svg"
-    width="100%"
-    alt="Animated ASCII Portrait"
+src="./assets/animated-face.svg"
+width="100%"
+alt="Animated ASCII Portrait"
 />
-
-</p>
 
 </td>
 
-<td width="54%" valign="top">
+<td width="45%" valign="top">
 
-<h2>terminal://{{username}}</h2>
+## ❯ terminal://{{username}}
 
-```text
-SYSTEM
-────────────────────────────────────────
+### 🖥️ System
 
-Name      : {{name}}
+| | |
+|:--|:--|
+| **👤 Name** | {{name}} |
+| **💻 Role** | {{role}} |
+| **📍 Location** | {{location}} |
+| **🚀 Status** | {{status}} |
 
-Role      : React Developer
+---
 
-Location  : India
+### 🧰 Toolbox
 
-Status    : Building cool things...
-```
-
-### Tech Stack
-
-<p>
+<p align="left">
 
 <img src="https://skillicons.dev/icons?i={{techStack}}" />
 
 </p>
 
-### Current Projects
+---
+
+### 🌐 Connect
 
 <p>
 
-{{projectButtons}}
+{{profileButtons}}
 
 </p>
 
-### GitHub Stats
+---
 
-```text
-Repositories : {{publicRepos}}
-Followers    : {{followers}}
-Following    : {{following}}
-Stars        : {{totalStars}}
-Since         : {{githubSince}}
-```
+### 📊 GitHub
+
+| | |
+|:--|--:|
+| **📦 Repositories** | {{publicRepos}} |
+| **⭐ Stars** | {{totalStars}} |
+| **👥 Followers** | {{followers}} |
+| **🤝 Following** | {{following}} |
+| **🗓 Since** | {{githubSince}} |
 
 </td>
 
 </tr>
-
 </table>
