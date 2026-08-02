@@ -1,17 +1,23 @@
-# Hi there 👋
-
 <table>
 <tr>
 
-<td width="42%" valign="top">
+<td width="46%" align="center" valign="middle">
 
-<img src="./assets/animated-face.svg" width="100%"/>
+<p align="center">
+
+<img
+    src="./assets/animated-face.svg"
+    width="100%"
+    alt="Animated ASCII Portrait"
+/>
+
+</p>
 
 </td>
 
-<td width="58%" valign="top">
+<td width="54%" valign="top">
 
-## terminal://{{username}}
+<h2>terminal://{{username}}</h2>
 
 ```text
 SYSTEM
