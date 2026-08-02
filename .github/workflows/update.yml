@@ -4,28 +4,19 @@ on:
   workflow_dispatch:
 
   schedule:
-  - cron: "0 6 * * *"
+    - cron: "0 6 * * *"
 
 permissions:
   contents: write
 
 jobs:
   update-profile:
-
     runs-on: ubuntu-latest
 
     steps:
 
-      # -----------------------------
-      # Checkout Repository
-      # -----------------------------
-
       - name: Checkout Repository
-      uses: actions/checkout@v5
-
-      # -----------------------------
-      # Setup Node
-      # -----------------------------
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
         uses: actions/setup-node@v5
@@ -33,58 +24,29 @@ jobs:
           node-version: 22
           cache: npm
 
-      # -----------------------------
-      # Install Dependencies
-      # -----------------------------
-
       - name: Install Dependencies
         run: npm install
-
-      # -----------------------------
-      # Generate GitHub Stats
-      # -----------------------------
 
       - name: Fetch GitHub Stats
         run: node scripts/fetchStats.js
         env:
-            GITHUB_USERNAME: ${{ secrets.USERNAME }}
-            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      # -----------------------------
-      # Generate ASCII Portrait
-      # -----------------------------
+          GITHUB_USERNAME: ${{ secrets.USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Generate ASCII
         run: node scripts/convertToAscii.js
 
-      # -----------------------------
-      # Generate SVG
-      # -----------------------------
-
       - name: Generate SVG
         run: node scripts/generateSvg.js
-
-      # -----------------------------
-      # Generate README
-      # -----------------------------
 
       - name: Generate README
         run: node scripts/updateReadme.js
 
-      # -----------------------------
-      # Commit Changes
-      # -----------------------------
-
       - name: Commit Changes
-
         run: |
-
           if git diff --quiet; then
-
             echo "No changes detected."
-
           else
-
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -93,5 +55,4 @@ jobs:
             git commit -m "chore(profile): refresh GitHub profile"
 
             git push
-
           fi
