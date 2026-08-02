@@ -17,12 +17,27 @@ alt="Animated ASCII Portrait"
 
 ### 🖥️ System
 
-| | |
-|:--|:--|
-| **👤 Name** | DIVYANSHU SINGH |
-| **💻 Role** | React Developer |
-| **📍 Location** | India |
-| **🚀 Status** | Building cool things... |
+<table>
+<tr>
+<td><b>👤 Name</b></td>
+<td>DIVYANSHU SINGH</td>
+</tr>
+
+<tr>
+<td><b>💻 Role</b></td>
+<td>React Developer</td>
+</tr>
+
+<tr>
+<td><b>📍 Location</b></td>
+<td>India</td>
+</tr>
+
+<tr>
+<td><b>🚀 Status</b></td>
+<td>Building cool things...</td>
+</tr>
+</table>
 
 ---
 
