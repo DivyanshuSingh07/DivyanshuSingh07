@@ -1,7 +1,7 @@
 <table>
 <tr>
 
-<td width="55%" align="center" valign="middle">
+<td width="52%" align="center" valign="top">
 
 <img
 src="./assets/animated-face.svg"
@@ -11,7 +11,7 @@ alt="Animated ASCII Portrait"
 
 </td>
 
-<td width="45%" valign="top">
+<td width="48%" valign="top">
 
 ## ❯ terminal://{{username}}
 
@@ -36,25 +36,35 @@ alt="Animated ASCII Portrait"
 
 ---
 
-### 🌐 Connect
+<table>
 
-<p>
+<tr>
+
+<td width="52%" valign="top">
+
+### 🌐 Connect
 
 {{profileButtons}}
 
-</p>
+</td>
 
----
+<td width="48%" valign="top">
 
 ### 📊 GitHub
 
 | | |
 |:--|--:|
-| **📦 Repositories** | {{publicRepos}} |
-| **⭐ Stars** | {{totalStars}} |
-| **👥 Followers** | {{followers}} |
-| **🤝 Following** | {{following}} |
-| **🗓 Since** | {{githubSince}} |
+| 📦 Repositories | {{publicRepos}} |
+| ⭐ Stars | {{totalStars}} |
+| 👥 Followers | {{followers}} |
+| 🤝 Following | {{following}} |
+| 🗓 Since | {{githubSince}} |
+
+</td>
+
+</tr>
+
+</table>
 
 </td>
 
