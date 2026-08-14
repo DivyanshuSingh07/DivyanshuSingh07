@@ -106,7 +106,7 @@ alt="X"
 |:--|--:|
 | 📦 Repositories | 12 |
 | ⭐ Stars | 0 |
-| 👥 Followers | 0 |
+| 👥 Followers | 1 |
 | 🤝 Following | 0 |
 | 🗓 Since | 2019 |
 
